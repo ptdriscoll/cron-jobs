@@ -1,0 +1,21 @@
+# exclude all job configs except test.example.sh
+/job-configs/*
+!/job-configs/test.example.sh
+
+# exclude all scripts except test.php
+/scripts/*
+!/scripts/test.php
+
+# exclude logs and reference directories
+/logs/
+/reference/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
