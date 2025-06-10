@@ -1,0 +1,12 @@
+# always use LF for shell scripts
+*.sh text eol=lf
+
+# use CRLF for common Windows-friendly files
+*.txt text eol=crlf
+*.csv text eol=crlf
+*.tsv text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# default to automatic normalization for all other files
+* text=auto
