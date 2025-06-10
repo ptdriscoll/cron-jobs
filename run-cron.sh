@@ -36,8 +36,13 @@ APP_LOG="$LOG_DIR/${APP_NAME}_$LOG_TIMESTAMP$LOG_EXTENSION"
 
 echo "[$(date '+%F %T')] STARTING job for $APP_NAME" >> "$CHRON_LOG"
 
-"$EXECUTABLE_PATH" "$SCRIPT_PATH" >> "$APP_LOG" 2>&1
-status=$?
+# run sript and capture exit status without stopping,  
+# even on failure, which avoids premature exit due to 'set -e'
+if "$EXECUTABLE_PATH" "$SCRIPT_PATH" >> "$APP_LOG" 2>&1; then
+  status=0
+else
+  status=$?
+fi
 
 send_email() {
   local subject="$1"
